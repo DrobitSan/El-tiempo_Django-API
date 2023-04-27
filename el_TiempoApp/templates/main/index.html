@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El tiempo</title>
+    <link rel="stylesheet" href="{% static 'css/tarjeta_tiempo.css' %}" >
+
+
+
+</head>
+<body>
+
+
+    <nav class="search-bar navbar bg-body-tertiary p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle">
+      <div class="container-fluid">
+        <a class="navbar-brand h1" href=""> 
+          <img src="{% static 'images/weather-app.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          El tiempo
+        </a>
+        <form method= "post" class="d-flex">
+          <div class="search-bar"></div>
+            {{ form.as_p }}
+            {% csrf_token %}
+          
+            <input class="form-control me-2" type="text" name="city" placeholder="Buscar ciudad..." aria-label="Buscar ciudad...">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </div>
+        </form>
+      </div>
+    </nav>
+    <br><br>
+    
+    <div class="card">
+        <div class="container">
+          <div class="cloud front">
+            <span class="left-front"></span>
+            <span class="right-front"></span>
+          </div>
+          <span class="sun sunshine"></span>
+          <span class="sun"></span>
+          <div class="cloud back">
+            <span class="left-back"></span>
+            <span class="right-back"></span>
+          </div>
+        </div>
+      
+        <div class="card-header">
+          <span>{{ciudad}}, {{pais}}<br></span>
+          <span>{{condicion}}</span>
+        </div>
+
+        <div class="card-header2">
+          <br>
+          <span>Viento {{viento}} Km/h <br></span>
+          <span>Humedad {{humedad}} %</span>
+        </div>
+   
+        <span class="temp">{{temp}}°</span>
+      
+        <div class="temp-scale">
+          <span>Celcius</span>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>  
+
+
+
+
+</body>
+</html>
